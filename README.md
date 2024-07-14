@@ -35,3 +35,4 @@ listAvailableBooks():
 Endpoint available at : GET localhost:8080/find-book/find-available-books
 No Payload required
 
+DB is available at : http://localhost:8080/h2-console
