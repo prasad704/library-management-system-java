@@ -7,5 +7,4 @@ import java.util.Optional;
 
 public interface DepartmentService extends JpaRepository<Department, Integer> {
     Optional<Department> getIdByDepartmentName(String departmentName);
-
 }

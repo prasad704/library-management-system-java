@@ -25,4 +25,5 @@ public interface TransactionService extends JpaRepository<InventoryTransaction,I
     InventoryTransaction getByBookName(String bookName);
     @Query(nativeQuery = true, value = "select * from inventory_transaction where last_updated>=:duration")
     List<InventoryTransaction> getBookNameByWeek(@Param("duration")Instant duration);
+    InventoryTransaction getDepartmentNameByBookName(String bookName);
 }
