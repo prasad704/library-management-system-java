@@ -5,17 +5,20 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
+import org.system.librarymanagementsystemjava.key.CompositeKey;
 
 
 @Component
 @Entity
 @Table(name="book_tbl")
+@IdClass(CompositeKey.class)
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @NotNull
+    @Column(unique = true)
     private String title;
     @NotNull
     private String author;
@@ -24,10 +27,13 @@ public class Book {
     private String isbn;
     private String genre;
     private String yearOfPublication;
+    //@ManyToOne(cascade = CascadeType.ALL)
+
     private String departmentName;
+    private int departmentId;
     private boolean available;
 
-    public Book(String title, String author, String isbn, String genre, String yearOfPublication, String departmentName) {
+    public Book(String title, String author, String isbn, String genre, String yearOfPublication, String departmentName, int departmentId) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
@@ -35,6 +41,7 @@ public class Book {
         this.yearOfPublication = yearOfPublication;
         this.available = false;
         this.departmentName = departmentName;
+        this.departmentId = departmentId;
     }
 
     public Book() {
@@ -81,16 +88,24 @@ public class Book {
         this.yearOfPublication = yearOfPublication;
     }
 
-    public String getDepartmentName() {
-        return departmentName;
-    }
-
     public int getId() {
         return id;
     }
 
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
+    }
+
+    public int getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
     }
 
     public boolean isAvailable() {

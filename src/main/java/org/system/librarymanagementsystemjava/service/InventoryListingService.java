@@ -15,4 +15,6 @@ public interface InventoryListingService extends JpaRepository<Book, Integer> {
     Book findBooksByTitleIgnoreCase(String title);
     List<Book> findBookByAuthorIgnoreCase(String author);
     List<Book> findByAvailableTrue();
+    Boolean existsByIsbn(String isbn);
+    Boolean existsByTitleIgnoreCase(String title);
 }

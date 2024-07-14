@@ -7,8 +7,5 @@ import org.system.librarymanagementsystemjava.model.Book;
 @Repository
 @Transactional
 public interface InventoryManagementService extends JpaRepository<Book,Integer> {
-
     Integer deleteByIsbn(String isbn);
-
-
 }
